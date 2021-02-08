@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>CodePen - Random Quote Machine</title>
+  
+<style>
+body {
+  height: 100wh;
+  margin: 0;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  font-family: system-ui;
+}
+
+h1 {
+  background: white;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+#text {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+#author {
+  display: block;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: monospace;
+}
+
+button {
+  color: white;
+}
+</style>
+
+
+</head>
+
+<body translate="no" >
+
+    <h1 id="root"></h1>
+  
+      <script id="rendered-js" type="module">
+import React from "https://cdn.skypack.dev/react";
+import ReactDOM from "https://cdn.skypack.dev/react-dom";
+class RandomQ extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      randomIndex: Math.floor(Math.random() * 3) };
+
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      randomIndex: Math.floor(Math.random() * 3) });
+
+  }
+  render() {
+    const quotes = ["You may be disappointed if you fail, but you are doomed if you don’t try.", "Change your thoughts and you change your world.", "Everything you’ve ever wanted is on the other side of fear."];
+    const author = ["- Beverly Sills", "- Norman Vincent Peale", "- George Addair"];
+    const randomQuote = quotes[this.state.randomIndex];
+    const randomAuthor = author[this.state.randomIndex];
+    return /*#__PURE__*/(
+      React.createElement("div", { id: "quote-box" }, /*#__PURE__*/
+      React.createElement("button", { id: "new-quote", onClick: this.handleClick }, "New Quote"), /*#__PURE__*/
+      React.createElement("div", { id: "text" }, randomQuote), /*#__PURE__*/
+      React.createElement("div", { id: "author" }, randomAuthor), /*#__PURE__*/
+      React.createElement("a", { id: "tweet-quote", href: "twitter.com/intent/tweet" }, "Tweet")));
+
+
+  }}
+;
+ReactDOM.render( /*#__PURE__*/React.createElement(RandomQ, null), document.getElementById('root'));
+const setBgColor = () => {
+  const randomC = Math.floor(Math.random() * 8 ** 8).toString(16);
+  document.body.style.backgroundColor = "#" + randomC;
+  document.getElementById("new-quote").style.backgroundColor = "#" + randomC;
+  document.getElementById("quote-box").style.color = "#" + randomC;
+
+  /*document.getElementById("text").style.color = "#" + randomC;  document.getElementById("author").style.color = "#" + randomC; document.getElementById("title").style.backgroundColor = "#" + randomC; */
+};
+root.addEventListener("click", setBgColor);
+setBgColor();
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
+
